@@ -7,6 +7,7 @@ alias sherlock='ssh login.sherlock.stanford.edu'
 alias centos='ssh -p 2222 root@localhost'
 alias changrila='ssh changrila2.stanford.edu'
 alias resetAgent='killall ssh-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+alias ramp="resetAgent && ssh -Y 10.10.237.212"
 
 # git
 alias ga='git add'
@@ -17,22 +18,12 @@ alias currBranch="git rev-parse --abbrev-ref HEAD"
 alias balenaTag='printf "%s::%s:%s\n" "$USER" "$(currBranch)" "$(currCommit)"'
 
 # pushd
-alias teach='pushd ~/Documents/teaching/'
-alias course='pushd ~/Documents/courses/'
-alias myweb='pushd ~/Documents/personal/rreggiar.github.io/'
-alias mycv='pushd ~/Documents/personal/rreggiar_cv/'
-alias dev='pushd ~/dev/'
+alias dev="pushd ~/.dev"
 
 # zsh
-alias update_alias='nvim ~/.oh-my-zsh/custom/alias.zsh'
+alias setAlias='nvim ~/.oh-my-zsh/custom/alias.zsh'
 alias myplugins='pushd ~/.oh-my-zsh/plugins/rer_plugins/'
+alias hg="history | grep $1"
 
 # vim
-alias wiki='vim -c VimwikiIndex'
-
-# python
-alias python='python3'
-alias porechop='~/.local/bin/Porechop/porechop-runner.py'
-
-# tools
-alias minimap2="~/.local/bin/minimap2/minimap2"
+alias vim='nvim'
