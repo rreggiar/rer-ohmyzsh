@@ -18,7 +18,7 @@ alias currBranch="git rev-parse --abbrev-ref HEAD"
 alias balenaTag='printf "%s::%s:%s\n" "$USER" "$(currBranch)" "$(currCommit)"'
 
 # pushd
-alias dev="pushd ~/.dev"
+alias dev="pushd ~/dev"
 
 # zsh
 alias setAlias='nvim ~/.oh-my-zsh/custom/alias.zsh'
