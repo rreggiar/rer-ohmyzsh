@@ -77,3 +77,7 @@ filePath(){
 
   ls -d $PWD/$FILE
 }
+
+vim(){
+  uv run nvim "$@"
+}
