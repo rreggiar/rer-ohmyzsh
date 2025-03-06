@@ -24,6 +24,3 @@ alias dev="pushd ~/dev"
 alias setAlias='nvim ~/.oh-my-zsh/custom/alias.zsh'
 alias myplugins='pushd ~/.oh-my-zsh/plugins/rer_plugins/'
 alias hg="history | grep $1"
-
-# vim
-alias vim='nvim'
