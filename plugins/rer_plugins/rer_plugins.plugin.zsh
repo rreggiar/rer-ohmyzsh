@@ -149,7 +149,7 @@ syncFromRamp() {
           dest="$1"
         else
           echo "Error: Too many arguments provided"
-          echo "Usage: syncToRamp [-r] source destination"
+          echo "Usage: syncFromRamp [-r] source destination"
           return 1
         fi
         shift
@@ -160,7 +160,7 @@ syncFromRamp() {
   # Check if source and destination are provided
   if [[ -z "$src" || -z "$dest" ]]; then
     echo "Error: Both source and destination must be specified"
-    echo "Usage: syncToRamp [-r] source destination"
+    echo "Usage: syncFromRamp [-r] source destination"
     return 1
   fi
 
