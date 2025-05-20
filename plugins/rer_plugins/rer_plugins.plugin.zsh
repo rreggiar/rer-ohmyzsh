@@ -118,11 +118,60 @@ syncToRamp() {
 
   # Set rsync options based on recursive flag
   local opts="-aavv"
-  if [[ $recursive -eq 0 ]]; then
-    opts="$opts --no-recursive"
+  if [[ ! $recursive -eq 0 ]]; then
+    opts="-aavvr"
   fi
 
   # Execute rsync command
   echo "Syncing to ramp server..."
+  #echo '$opts "$src" 10.10.237.212:"$dest"'
   rsync $opts "$src" 10.10.237.212:"$dest"
+}
+
+
+
+syncFromRamp() {
+ local recursive=0
+ local src=""
+ local dest=""
+
+ # Parse arguments
+ while [[ $# -gt 0 ]]; do
+   case "$1" in
+     -r)
+        recursive=1
+        shift
+        ;;
+      *)
+        if [[ -z "$src" ]]; then
+          src="$1"
+        elif [[ -z "$dest" ]]; then
+          dest="$1"
+        else
+          echo "Error: Too many arguments provided"
+          echo "Usage: syncToRamp [-r] source destination"
+          return 1
+        fi
+        shift
+        ;;
+    esac
+  done
+
+  # Check if source and destination are provided
+  if [[ -z "$src" || -z "$dest" ]]; then
+    echo "Error: Both source and destination must be specified"
+    echo "Usage: syncToRamp [-r] source destination"
+    return 1
+  fi
+
+  # Set rsync options based on recursive flag
+  local opts="-aavv"
+  if [[ ! $recursive -eq 0 ]]; then
+    opts="-aavvr"
+  fi
+
+  # Execute rsync command
+  echo "Syncing to ramp server..."
+  #echo '$opts "$src" 10.10.237.212:"$dest"'
+  rsync $opts 10.10.237.212:"$src" "$dest"
 }
