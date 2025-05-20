@@ -6,7 +6,7 @@ alias mustard='ssh mustard'
 alias sherlock='ssh login.sherlock.stanford.edu'
 alias centos='ssh -p 2222 root@localhost'
 alias changrila='ssh changrila2.stanford.edu'
-alias resetAgent='killall ssh-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+alias resetAgent='killall ssh-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa || ssh-agent'
 alias ramp="resetAgent && ssh -Y 10.10.237.212"
 
 # git
