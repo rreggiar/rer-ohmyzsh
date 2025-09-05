@@ -7,7 +7,6 @@ alias sherlock='ssh login.sherlock.stanford.edu'
 alias centos='ssh -p 2222 root@localhost'
 alias changrila='ssh changrila2.stanford.edu'
 alias resetAgent='killall ssh-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa || ssh-agent'
-alias ramp="resetAgent && ssh -Y 10.10.237.212"
 
 # git
 alias ga='git add'
@@ -22,5 +21,6 @@ alias dev="pushd ~/dev"
 
 # zsh
 alias setAlias='nvim ~/.oh-my-zsh/custom/alias.zsh'
+alias setPlugins='nvim ~/.oh-my-zsh/plugins/rer_plugins/rer_plugins.plugin.zsh'
 alias myplugins='pushd ~/.oh-my-zsh/plugins/rer_plugins/'
 alias hg="history | grep $1"
