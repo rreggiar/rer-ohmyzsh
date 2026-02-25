@@ -87,6 +87,24 @@ iterm(){
 # Defaults:
 #   HOST_ALIAS=ramp-box, PROFILE_NAME="ramp-box", WORK_SESSION=work
 ramp() {
+  local SESSION="${1:-}"
+  local HOST_ALIAS="${2:-ramp-box}"
+  local PROFILE_NAME="${3:-ramp-box}"
+
+  if [[ -z "$SESSION" ]]; then
+    echo "Active sessions on ${HOST_ALIAS}:"
+    ssh "${HOST_ALIAS}" 'ramp-status'
+    return
+  fi
+
+  local CMD="ssh -t ${HOST_ALIAS} tmux -CC new -A -s ${SESSION}"
+
+  osascript \
+    -e 'tell application id "com.googlecode.iterm2" to activate' \
+    -e "tell application id \"com.googlecode.iterm2\" to create window with profile \"$PROFILE_NAME\" command \"$CMD\""
+}
+
+ramp-dep2() {
   local HOST_ALIAS="${1:-ramp-box}"
   local PROFILE_NAME="${2:-ramp-box}"
   local WORK_SESSION="${3:-work}"
